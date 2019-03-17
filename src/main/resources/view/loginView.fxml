@@ -13,9 +13,9 @@
       <TextField fx:id="txtLogin" layoutX="89.0" layoutY="87.0" prefHeight="25.0" prefWidth="205.0" promptText="login" />
       <TextField fx:id="txtPassword" layoutX="90.0" layoutY="183.0" prefHeight="25.0" prefWidth="205.0" promptText="haslo" visible="false" />
       <PasswordField fx:id="pswFieldPassword" layoutX="89.0" layoutY="183.0" prefHeight="25.0" prefWidth="205.0" promptText="haslo" />
-      <Button fx:id="btnShow" layoutX="306.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#ShowPasswordEvent" text="SHOW" />
-      <Button fx:id="btnLogin" layoutX="92.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#LogInEvent" text="LOGIN" />
-      <Button fx:id="btnGuest" layoutX="160.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#ContinueAsGuestEvent" text="GUEST" />
-      <Button fx:id="btnSignIn" layoutX="233.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#SignInEvent" text="SIGN IN" />
+      <Button fx:id="btnShow" layoutX="306.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#showPasswordEvent" text="SHOW" />
+      <Button fx:id="btnLogin" layoutX="92.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#logInEvent" text="LOGIN" />
+      <Button fx:id="btnGuest" layoutX="160.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#continueAsGuestEvent" text="GUEST" />
+      <Button fx:id="btnSignIn" layoutX="233.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#signInEvent" text="SIGN IN" />
    </children>
 </AnchorPane>

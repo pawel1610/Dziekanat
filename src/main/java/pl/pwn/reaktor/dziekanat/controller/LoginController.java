@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputEvent;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -45,12 +47,16 @@ public class LoginController {
     private Button btnSignIn;
 
     @FXML
-    void ContinueAsGuestEvent(MouseEvent event) {
-
+    void continueAsGuestEvent(MouseEvent event) throws IOException {
+        Stage primaryStage = DziekanatMain.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("/view/guestView.fxml")); // wskazujemy nasz widok FXML
+        primaryStage.setTitle("Guest");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
     @FXML
-    void LogInEvent(MouseEvent event) throws IOException {
+    void logInEvent(InputEvent event) throws IOException {
         Stage primaryStage = DziekanatMain.getPrimaryStage();
         Parent root = FXMLLoader.load(getClass().getResource("/view/userView.fxml")); // wskazujemy nasz widok FXML
         primaryStage.setTitle("User");
@@ -60,7 +66,7 @@ public class LoginController {
     }
 
     @FXML
-    void ShowPasswordEvent(MouseEvent event) {
+    void showPasswordEvent(MouseEvent event) {
         if("SHOW".equalsIgnoreCase(btnShow.getText())){
             txtPassword.setText(pswFieldPassword.getText());
             txtPassword.setVisible(true);
@@ -77,13 +83,16 @@ public class LoginController {
     }
 
     @FXML
-    void SignInEvent(MouseEvent event) {
+    void signInEvent(MouseEvent event) {
 
     }
 
     @FXML
-    void loginKeyAction(KeyEvent event) {
-
+    void loginKeyAction(KeyEvent event) throws IOException {
+        if (KeyCode.ENTER.equals(event.getCode())) {
+            logInEvent(event);
+        }
     }
+
 
 }
