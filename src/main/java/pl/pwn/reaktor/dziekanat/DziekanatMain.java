@@ -7,9 +7,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class DziekanatMain extends Application {
+
+
+    private static Stage primaryStage;
+
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/dziekanatView.fxml")); // wskazujemy nasz widok FXML
-        primaryStage.setTitle("Dziekanat");
+        setPrimaryStage(primaryStage);
+        Parent root = FXMLLoader.load(getClass().getResource("/view/loginView.fxml")); // wskazujemy nasz widok FXML
+        primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
@@ -18,4 +23,12 @@ public class DziekanatMain extends Application {
         launch(args);
 
     }
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    private static void setPrimaryStage(Stage primaryStage) {
+        DziekanatMain.primaryStage = primaryStage;
+    }
+
 }

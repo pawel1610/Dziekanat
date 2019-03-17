@@ -1,14 +1,21 @@
 package pl.pwn.reaktor.dziekanat.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import pl.pwn.reaktor.dziekanat.DziekanatMain;
 
-public class DziekanatController {
+import java.io.IOException;
+
+public class LoginController {
 
     @FXML
     private Label lblLogin;
@@ -43,7 +50,12 @@ public class DziekanatController {
     }
 
     @FXML
-    void LogInEvent(MouseEvent event) {
+    void LogInEvent(MouseEvent event) throws IOException {
+        Stage primaryStage = DziekanatMain.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("/view/userView.fxml")); // wskazujemy nasz widok FXML
+        primaryStage.setTitle("User");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
 
     }
 
