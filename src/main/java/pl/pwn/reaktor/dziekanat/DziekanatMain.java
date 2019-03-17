@@ -1,4 +1,4 @@
-package pl.pen.reaktor.dziekanat;
+package pl.pwn.reaktor.dziekanat;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
