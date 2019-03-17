@@ -14,6 +14,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import pl.pwn.reaktor.dziekanat.DziekanatMain;
+import pl.pwn.reaktor.dziekanat.model.RoleEnum;
+import pl.pwn.reaktor.dziekanat.model.User;
+import pl.pwn.reaktor.dziekanat.service.LoginService;
 
 import java.io.IOException;
 
@@ -57,11 +60,24 @@ public class LoginController {
 
     @FXML
     void logInEvent(InputEvent event) throws IOException {
-        Stage primaryStage = DziekanatMain.getPrimaryStage();
-        Parent root = FXMLLoader.load(getClass().getResource("/view/userView.fxml")); // wskazujemy nasz widok FXML
-        primaryStage.setTitle("User");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+
+        String login = txtLogin.getText();
+        String pass = pswFieldPassword.isVisible() ? pswFieldPassword.getText():txtPassword.getText();
+        LoginService loginService = new LoginService();
+        User user =loginService.login(login,pass);
+
+        if (user!= null) {
+            RoleEnum role = user.getRole();
+            System.out.println("Zalogowano użytkownika " + login + " o roli: " + role);
+            if (RoleEnum.ROLE_STUDENT.equals(role)) {
+                Stage primaryStage = DziekanatMain.getPrimaryStage();
+                Parent root = FXMLLoader.load(getClass().getResource("/view/userView.fxml")); // wskazujemy nasz widok FXML
+                primaryStage.setTitle("User");
+                primaryStage.setScene(new Scene(root));
+                primaryStage.show();
+            }
+        }
+
 
     }
 
