@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pl.pwn.reaktor.dziekanat.utils.HibernateUtils;
 
 public class DziekanatMain extends Application {
 
@@ -31,4 +32,17 @@ public class DziekanatMain extends Application {
         DziekanatMain.primaryStage = primaryStage;
     }
 
+    @Override
+    public void init() throws Exception {
+        super.init();
+        System.out.println("Metoda init - uruchamiana tylko raz przy stracie projektu");
+        HibernateUtils.initSessionFactory();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        System.out.println("Metoda init - uruchamiana tylko raz przy zamykaniu projektu");
+        HibernateUtils.destroySessionFactory();
+    }
 }
