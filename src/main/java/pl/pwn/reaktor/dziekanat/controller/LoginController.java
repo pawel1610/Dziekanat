@@ -99,7 +99,12 @@ public class LoginController {
     }
 
     @FXML
-    void signInEvent(MouseEvent event) {
+    void signInEvent(MouseEvent event) throws IOException {
+        Stage primaryStage = DziekanatMain.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("/view/signInView.fxml")); // wskazujemy nasz widok FXML
+        primaryStage.setTitle("Sign In");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
 
     }
 
