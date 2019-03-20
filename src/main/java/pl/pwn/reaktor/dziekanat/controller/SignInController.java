@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import pl.pwn.reaktor.dziekanat.DziekanatMain;
+import pl.pwn.reaktor.dziekanat.model.User;
 import pl.pwn.reaktor.dziekanat.service.SignInService;
 
 import java.io.IOException;
@@ -101,6 +102,12 @@ public class SignInController {
     @FXML
     void signIn(MouseEvent event) throws IOException {
 
+        lblSignInComparePassword.setText("Password");
+        lblSignInComparePassword.setTextFill(Paint.valueOf("BLACK"));
+
+        lblSignInLogin.setText("Login");
+        lblSignInLogin.setTextFill(Paint.valueOf("BLACK"));
+
         SignInService signInService = new SignInService();
 
         String password = pfPassword.isVisible() ? pfPassword.getText() : tfPassword.getText();
@@ -109,12 +116,20 @@ public class SignInController {
         Boolean isPasswordmatch = signInService.isPasswordMatch(password,confPassword);
 
         if (isPasswordmatch){
-            signInService.signIn(tfLogin.getText(),pfPassword.isVisible() ? pfPassword.getText() : tfPassword.getText());
-            Stage primaryStage = DziekanatMain.getPrimaryStage();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/loginView.fxml"));
-            primaryStage.setTitle("Login");
-            primaryStage.setScene(new Scene(root));
-            primaryStage.show();
+
+            User user =signInService.isLoginExist(tfLogin.getText());
+            if (user == null){
+                signInService.signIn(tfLogin.getText(),pfPassword.isVisible() ? pfPassword.getText() : tfPassword.getText());
+                Stage primaryStage = DziekanatMain.getPrimaryStage();
+                Parent root = FXMLLoader.load(getClass().getResource("/view/loginView.fxml"));
+                primaryStage.setTitle("Login");
+                primaryStage.setScene(new Scene(root));
+                primaryStage.show();
+            }else {
+                lblSignInLogin.setText("Login already exist");
+                lblSignInLogin.setTextFill(Paint.valueOf("RED"));
+            }
+
         }else {
             lblSignInComparePassword.setText("Passwords don't match");
             lblSignInComparePassword.setTextFill(Paint.valueOf("RED"));

@@ -22,7 +22,6 @@ public class LoginService {
         query.setParameter("password", password);
         query.setMaxResults(1);
         User logedUser = (User) query.uniqueResult();
-
         transaction.commit();
         session.close();
         return logedUser;
