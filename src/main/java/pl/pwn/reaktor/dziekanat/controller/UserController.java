@@ -19,6 +19,9 @@ public class UserController {
     private Button btnUpdateData;
 
     @FXML
+    private Button btnSurvey;
+
+    @FXML
     private Label lblHeadText;
 
     @FXML
@@ -29,6 +32,17 @@ public class UserController {
         primaryStage.setTitle("Update data");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+    }
+
+    @FXML
+    void getSurvey(MouseEvent event) throws IOException {
+
+        Stage primaryStage = DziekanatMain.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("/view/surveyView.fxml")); // wskazujemy nasz widok FXML
+        primaryStage.setTitle("Survey");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
     }
 
     public void initialize(){
