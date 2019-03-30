@@ -75,9 +75,14 @@ public class LoginController {
                 primaryStage.setTitle("User");
                 primaryStage.setScene(new Scene(root));
                 primaryStage.show();
+            } else if (RoleEnum.ROLE_ADMIN.equals(role)) {
+                Stage primaryStage = DziekanatMain.getPrimaryStage();
+                Parent root = FXMLLoader.load(getClass().getResource("/view/adminView.fxml")); // wskazujemy nasz widok FXML
+                primaryStage.setTitle("Admin");
+                primaryStage.setScene(new Scene(root));
+                primaryStage.show();
             }
         }
-
 
     }
 

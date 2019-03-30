@@ -34,16 +34,13 @@ public class SignInService {
     }
 
     public void signIn(String login, String password) {
-
         Session session = HibernateUtils.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-
         User newUser = new User();
         newUser.setLogin(login);
         newUser.setPassword(password);
         newUser.setRole(ROLE_STUDENT);
         newUser.setActive(true);
-
         session.save(newUser);
         transaction.commit();
         session.close();
