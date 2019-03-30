@@ -5,15 +5,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import pl.pwn.reaktor.dziekanat.DziekanatMain;
 import pl.pwn.reaktor.dziekanat.model.DTO.StudentDTO;
 import pl.pwn.reaktor.dziekanat.model.User;
+import pl.pwn.reaktor.dziekanat.model.utiils.CurrentUser;
 import pl.pwn.reaktor.dziekanat.service.UserService;
 
+import java.io.IOException;
 import java.util.List;
 
 public class AdminController {
@@ -75,13 +79,29 @@ public class AdminController {
     private UserService userService = new UserService();
 
     @FXML
-    void closeAction(ActionEvent event) {
+    void aboutAction(ActionEvent event) {
+        Alert info = new Alert(Alert.AlertType.INFORMATION);
+        info.setTitle("About");
+        info.setHeaderText("Instruction");
+        info.setContentText("Blablabla");
+        info.show();
 
     }
 
     @FXML
-    void logoutAction(ActionEvent event) {
+    void closeAction(ActionEvent event) {
+        System.exit(0);
+    }
 
+    @FXML
+    void logoutAction(ActionEvent event) throws IOException {
+
+        CurrentUser.cleanCurrentUser();
+        Stage primaryStage = DziekanatMain.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("/view/loginView.fxml")); // wskazujemy nasz widok FXML
+        primaryStage.setTitle("Login");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
     public void initialize(){
