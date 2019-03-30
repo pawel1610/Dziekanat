@@ -1,11 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.pwn.reaktor.dziekanat.controller.AdminController">
+<AnchorPane prefHeight="515.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.pwn.reaktor.dziekanat.controller.AdminController">
    <children>
-      <Label fx:id="lblAdmin" layoutX="292.0" layoutY="47.0" text="Admin" />
+      <TableView fx:id="tvStudent" layoutX="44.0" layoutY="121.0" prefHeight="125.0" prefWidth="528.0">
+        <columns>
+          <TableColumn fx:id="colIDS" prefWidth="68.0" text="ID" />
+          <TableColumn fx:id="colLoginS" prefWidth="83.0" text="Login" />
+            <TableColumn fx:id="colActiveS" prefWidth="75.0" text="Active" />
+            <TableColumn prefWidth="75.0" text="Student">
+               <columns>
+                  <TableColumn fx:id="colFirstNameS" prefWidth="75.0" text="First name" />
+                  <TableColumn fx:id="colLastNameS" prefWidth="75.0" text="Last name" />
+               </columns>
+            </TableColumn>
+            <TableColumn prefWidth="75.0" text="Adress">
+               <columns>
+                  <TableColumn fx:id="colStreetS" prefWidth="75.0" text="Street" />
+                  <TableColumn fx:id="colCityS" prefWidth="75.0" text="City" />
+               </columns>
+            </TableColumn>
+        </columns>
+      </TableView>
+      <Label fx:id="lblStudent" layoutX="278.0" layoutY="79.0" text="Students" />
+      <Label fx:id="lblAdmin" layoutX="281.0" layoutY="286.0" text="Admins" />
+      <TableView fx:id="tvAdmin" layoutX="121.0" layoutY="312.0" prefHeight="125.0" prefWidth="374.0">
+         <columns>
+            <TableColumn fx:id="colIDA" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="colLoginA" prefWidth="93.0" text="Login" />
+            <TableColumn fx:id="colRoleA" prefWidth="105.0" text="Role" />
+            <TableColumn fx:id="colActiveA" prefWidth="100.0" text="Active" />
+         </columns>
+      </TableView>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="mClose" mnemonicParsing="false" onAction="#closeAction" text="Close" />
+                  <MenuItem fx:id="mLogout" mnemonicParsing="false" onAction="#logoutAction" text="Logout" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="mAbout" mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>
