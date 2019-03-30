@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import static pl.pwn.reaktor.dziekanat.model.RoleEnum.ROLE_STUDENT;
 
-public class SignInService {
+public class UserService {
 
 
     public Boolean isPasswordMatch(String password, String confPassword) {
@@ -41,8 +41,19 @@ public class SignInService {
         newUser.setPassword(password);
         newUser.setRole(ROLE_STUDENT);
         newUser.setActive(true);
+//        newUser.setStudent(null);
         session.save(newUser);
         transaction.commit();
         session.close();
+
+
+    }public void update (User user) {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(user);
+        transaction.commit();
+        session.close();
     }
+
+
 }

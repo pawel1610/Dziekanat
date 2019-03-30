@@ -25,4 +25,8 @@ public class User {
     private RoleEnum role;
 
     private boolean active;
+
+    @OneToOne
+    @JoinColumn(name = "our_student") // bez JoinColumn, domyslnie kolumna ta zawieralaby id studenta
+    private Student student;
 }

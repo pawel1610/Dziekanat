@@ -13,7 +13,7 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import pl.pwn.reaktor.dziekanat.DziekanatMain;
 import pl.pwn.reaktor.dziekanat.model.User;
-import pl.pwn.reaktor.dziekanat.service.SignInService;
+import pl.pwn.reaktor.dziekanat.service.UserService;
 
 import java.io.IOException;
 
@@ -108,7 +108,7 @@ public class SignInController {
         lblSignInLogin.setText("Login");
         lblSignInLogin.setTextFill(Paint.valueOf("BLACK"));
 
-        SignInService signInService = new SignInService();
+        UserService signInService = new UserService();
 
         String password = pfPassword.isVisible() ? pfPassword.getText() : tfPassword.getText();
         String confPassword = pfConfPassword.isVisible() ? pfConfPassword.getText() : tfConfPassword.getText();

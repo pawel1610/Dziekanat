@@ -9,6 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.mapping.MetadataSource;
 import org.hibernate.service.ServiceRegistry;
+import pl.pwn.reaktor.dziekanat.model.Student;
 import pl.pwn.reaktor.dziekanat.model.User;
 
 public class HibernateUtils {
@@ -31,6 +32,7 @@ public class HibernateUtils {
             //musimy dla kazdej Entity(encji) dodawac nowy wpis zeby dzialalo mapowanie
             MetadataSources sources = new MetadataSources(serviceRegistry);
             sources.addAnnotatedClass(User.class);
+            sources.addAnnotatedClass(Student.class);
 
             Metadata metadata = sources.getMetadataBuilder().build();
 
